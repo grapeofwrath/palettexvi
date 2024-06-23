@@ -1,0 +1,99 @@
+package component
+
+type Base16 struct {
+    Scheme string `json:"scheme"`
+    Author string `json:"author"`
+    Base00 string `json:"base00"`
+    Base01 string `json:"base01"`
+    Base02 string `json:"base02"`
+    Base03 string `json:"base03"`
+    Base04 string `json:"base04"`
+    Base05 string `json:"base05"`
+    Base06 string `json:"base06"`
+    Base07 string `json:"base07"`
+    Base08 string `json:"base08"`
+    Base09 string `json:"base09"`
+    Base0A string `json:"base0A"`
+    Base0B string `json:"base0B"`
+    Base0C string `json:"base0C"`
+    Base0D string `json:"base0D"`
+    Base0E string `json:"base0E"`
+    Base0F string `json:"base0F"`
+}
+
+templ Color(hex, label string) {
+    <div class={ "bg-["+hex+"]", "h-36 w-24 flex flex-col items-center place-content-center" }>
+        <p id={ label } class="text-6xl text-gray-400" style="opacity: 0"
+            _="on click from #labels toggle *opacity on me">
+            {label}
+        </p>
+        <button
+            id="contrast"
+            type="button"
+            _="on click toggle between .text-gray-800 and .text-gray-400 on the previous <p/>
+                on click from #labels toggle *display on me"
+            class="h-7 w-7 rounded-full bg-gray-300 hover:cursor "
+            style="display: none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-7 w-7" viewBox="0 0 512 512">
+                <path d="M256 32A224 224 0 0097.61 414.39 224 224 0 10414.39 97.61 222.53 222.53 0 00256 32zM64 256c0-105.87 86.13-192 192-192v384c-105.87 0-192-86.13-192-192z"/>
+            </svg>
+        </button>
+    </div>
+}
+
+templ Palette(p Base16) {
+    <div class="flex flex-col max-w-6xl">
+        <div>
+            <span>{p.Scheme}</span>
+            <span> | </span>
+            <span>{p.Author}</span>
+        </div>
+        <div class="flex-col rounded-xl">
+            <div class="flex flex-row">
+                @Color(p.Base00, "00")
+                @Color(p.Base01, "01")
+                @Color(p.Base02, "02")
+                @Color(p.Base03, "03")
+                @Color(p.Base04, "04")
+                @Color(p.Base05, "05")
+                @Color(p.Base06, "06")
+                @Color(p.Base07, "07")
+            </div>
+            <div class="flex flex-row">
+                @Color(p.Base08, "08")
+                @Color(p.Base09, "09")
+                @Color(p.Base0A, "0A")
+                @Color(p.Base0B, "0B")
+                @Color(p.Base0C, "0C")
+                @Color(p.Base0D, "0D")
+                @Color(p.Base0E, "0E")
+                @Color(p.Base0F, "0F")
+            </div>
+        </div>
+        <div>
+            <button
+                id="labels"
+                type="button"
+                _=""
+                class={ "h-8 rounded-lg bg-["+p.Base06+"] text-["+p.Base04+"] hover:cursor flex" }>
+                <span class="m-auto px-2">Toggle Labels</span>
+            </button>
+        </div>
+    </div>
+}
+//Base00: "#14171F",
+//Base01: "#323848",
+//Base02: "#3F475A",
+//Base03: "#6D7A88",
+//Base04: "#97A4AF",
+//Base05: "#EFC164",
+//Base06: "#2A2F3C",
+//Base07: "#DDD7CA",
+//Base08: "#A885C1",
+//Base09: "#F35955",
+//Base0A: "#F3835D",
+//Base0B: "#468966",
+//Base0C: "#3A8098",
+//Base0D: "#70ADC2",
+//Base0E: "#67CC8E",
+//Base0F: "#DDD7CA",

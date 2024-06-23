@@ -1,0 +1,15 @@
+package component
+
+templ Button(id, buttonType, hyperscript, label string) {
+    <button id={ id } type={ buttonType } _={ hyperscript }>{label}</button>
+}
+
+templ ButtonControl(id, buttonType, hyperscript, label string) {
+    <button
+        id={ id }
+        type={ buttonType }
+        _={ hyperscript }
+        class="h-8 rounded-lg bg-gray-300 hover:cursor flex">
+        <span class="m-auto px-2">{label}</span>
+    </button>
+}
